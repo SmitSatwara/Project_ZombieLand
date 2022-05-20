@@ -54,11 +54,14 @@ public class EnemyAI : MonoBehaviour
 
     private void AttactTarget()
     {
+        GetComponent<Animator>().SetBool("attact", true);
         Debug.Log(name+" is Attacking"+target.name);
     }
 
     private void ChaseTarget()
     {
+        GetComponent<Animator>().SetBool("attact", false);
+        GetComponent<Animator>().SetTrigger("move");
         navMeshAgent.SetDestination(target.position);
     }
 
@@ -70,5 +73,5 @@ public class EnemyAI : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, chaseRange);
     }
 
-
+    
 }
